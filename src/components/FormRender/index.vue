@@ -61,16 +61,8 @@ export default {
     handleBlur() {
       console.log('blur hahah')
     },
-    getModel(key) {
-      if (key) {
-        return this.store.getValue(key)
-      }
-      return this.fields.reduce((acc, v) => {
-        if (v.prop && !v.isStatic) {
-          acc[v.prop] = this.store.getValue(v.prop)
-        }
-        return acc
-      }, {})
+    getModel(...keys) {
+      return this.store.getValue(...keys)
     },
     setModel(model) {
       return this.store.setValue(model)

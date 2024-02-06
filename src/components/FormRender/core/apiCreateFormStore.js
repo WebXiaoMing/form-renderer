@@ -27,7 +27,7 @@ export function apiCreateFormStore(createFormComponent) {
                         res[k] = instance.getValue()
                     }
                     return res
-                })
+                }, {})
             },
             setValue(newValue) {
                 Object.keys(newValue).forEach(k => {
