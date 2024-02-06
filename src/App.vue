@@ -41,8 +41,12 @@ export default {
         }, 3000)
       })
     },
-    handleSubmit() {
-      console.log(this.$refs.formRender.getModel())
+    async handleSubmit() {
+      const valid = await this.$refs.formRender.validate()
+      if (valid) {
+        console.log(this.$refs.formRender.getModel())
+      }
+      console.log(valid)
     },
     handleReset() {
       this.$refs.formRender.resetModel()

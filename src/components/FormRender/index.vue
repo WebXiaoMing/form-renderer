@@ -1,5 +1,5 @@
 <template>
-  <el-form ref="form" @submit.native.prevent>
+  <el-form ref="form" @submit.native.prevent :model="{}">
     <el-row :gutter="layout.gutter">
       <el-col
           v-for="field in fields"
@@ -77,9 +77,10 @@ export default {
     },
     resetModel() {
       this.store.resetValue()
+      this.clearValidate()
     },
     validate() {
-      return this.$refs.form.validate()
+      return new Promise(resolve => this.$refs.form.validate(resolve))
     },
     validateField(props) {
       return this.$refs.form.validateField(props)
